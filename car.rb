@@ -1,12 +1,15 @@
+
+
 class Car
 
-  attr_reader :colour, :model, :fuel_level, :speed
+  attr_reader :colour, :model, :fuel_level, :speed, :driver
 
-  def initialize(colour, model, fuel_level, speed)
+  def initialize(colour, model, fuel_level, speed, driver)
     @colour = colour
     @model = model
     @fuel_level = fuel_level
     @speed = speed
+    @driver = driver
 
   end
 
@@ -21,7 +24,15 @@ class Car
     elsif speed>10
       @speed=speed-10
     end
-
   end
+
+  def driver(name)
+    return @driver.name
+  end
+
+
+  # def pick_up_passengers
+
+  # end
 
 end
