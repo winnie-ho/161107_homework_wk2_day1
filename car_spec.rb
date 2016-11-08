@@ -7,9 +7,11 @@ class TestCar < Minitest::Test
 
   def setup
 
-    @driver=Person.new("Alonso", "35")
+    @driver=Person.new("Alonso", 35)
+    @passenger1=Person.new("Totoro",0)
 
-    @car = Car.new("Red", "Nissan GTR", 100, 0, @driver)
+
+    @car = Car.new("Red", "Nissan GTR", @driver)
   end
 
 
@@ -44,14 +46,18 @@ class TestCar < Minitest::Test
   end
 
   def test_driver
-    @car.driver(name)
     assert_equal("Alonso", @driver.name)
+    assert_equal(35,@driver.age)
   end
 
-  # def test_pick_up_passengers
-  #   @car.pick_up_passengers(@person)
-  #   assert_equal(1,@car.pick_up_passengers)
+  def test_pick_up_passengers
+    @car.pick_up_passengers(@passenger1)
+    assert_equal("Totoro",@passenger1.name)
+  end
 
-  # end
+  def test_passenger_count
+    @car.pick_up_passengers(@passenger1)
+    assert_equal(1,@car.passengers.count)
+  end
 
 end

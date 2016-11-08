@@ -2,14 +2,17 @@
 
 class Car
 
-  attr_reader :colour, :model, :fuel_level, :speed, :driver
+  attr_reader :fuel_level, :speed
 
-  def initialize(colour, model, fuel_level, speed, driver)
+  attr_accessor :colour, :model, :driver, :passengers
+
+  def initialize(colour, model, driver)
     @colour = colour
     @model = model
-    @fuel_level = fuel_level
-    @speed = speed
+    @fuel_level = 100
+    @speed = 0
     @driver = driver
+    @passengers = []
 
   end
 
@@ -30,9 +33,13 @@ class Car
     return @driver.name
   end
 
+  def pick_up_passengers(passenger)
+    @passengers<<1
+    return passenger.name
+  end
 
-  # def pick_up_passengers
-
-  # end
+  def passenger_count
+    return @passengers.count
+  end
 
 end
